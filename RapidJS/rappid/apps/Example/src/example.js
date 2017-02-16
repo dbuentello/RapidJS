@@ -26,6 +26,8 @@
         var graph = new joint.dia.Graph;
         var tree = new joint.layout.TreeLayout({ graph: graph });
 
+        
+
         var paper = new joint.dia.Paper({
             width: $('#paperdiv').width(),
             height: $('#paperdiv').height(),
@@ -46,6 +48,10 @@
             }
         });
 
+        var commandManager = new joint.dia.CommandManager({
+            graph: graph
+        });
+
         paper.on({
             'element:pointerdown': onElementClick,
             'blank:pointerdown': paperScroller.startPanning
@@ -53,19 +59,13 @@
 
         paperScroller.render().$el.appendTo('#paperdiv');
 
-                var toolbar = new joint.ui.Toolbar({
-        tools: [
-            { type: 'checkbox' },
-            { type: 'range', name: 'slider', min: 0, max: 10, step: 1 },
-            { type: 'separator' },
-            { type: 'toggle', name: 'toggle', label: ''},
-            'separator',  // also possible, use defaults
-            { type: 'inputText' },
-            { type: 'button', name: 'ok', text: 'Ok' },
-            { type: 'button', name: 'cancel', text: 'Cancel' },
-            { type: 'separator' }
-        ]
-    });
+        var toolbar = new joint.ui.Toolbar({
+            tools: ['undo', 'redo'],
+            references: {
+                paperScroller: paperScroller,
+                commandManager: commandManager
+            }
+        });
 
     toolbar.render().$el.appendTo('#toolbardiv');
 
