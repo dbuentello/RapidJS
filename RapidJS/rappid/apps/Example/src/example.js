@@ -27,8 +27,8 @@
         var tree = new joint.layout.TreeLayout({ graph: graph });
 
         var paper = new joint.dia.Paper({
-            width:  $('#paperdiv').height(),
-            height: 1000,
+            width:  $('#paperdiv').width(),
+            height: $('#paperdiv').height(),
             gridSize: 10,
             model: graph,
             perpendicularLinks: true,

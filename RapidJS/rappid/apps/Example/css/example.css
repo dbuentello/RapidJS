@@ -19,6 +19,7 @@ file, You can obtain one at http://jointjs.com/license/rappid_v2.txt
 .app-body {
     position: relative;
     width: 100%;
+    min-height: 640px;
     height: 90%;
 }
 
@@ -39,9 +40,10 @@ html, body, #app-body,
 }
 
 /*  Paper  */
-.paper-container {
+.app-body .paper-container {
     position: relative;
     top: 0;
+    min-height: 640px;
     height: 100%;
     width: 80%;
     overflow: hidden;
