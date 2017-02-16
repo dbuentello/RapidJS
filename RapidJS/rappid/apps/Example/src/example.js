@@ -27,7 +27,7 @@
         var tree = new joint.layout.TreeLayout({ graph: graph });
 
         var paper = new joint.dia.Paper({
-            width:  $('#paperdiv').width(),
+            width: $('#paperdiv').width(),
             height: $('#paperdiv').height(),
             gridSize: 10,
             model: graph,
@@ -53,13 +53,7 @@
 
         paperScroller.render().$el.appendTo('#paperdiv');
 
-        var stencil = new joint.ui.Stencil({
-
-            paper: paperScroller,
-            width: 240
-        });
-
-        var toolbar = new joint.ui.Toolbar({
+                var toolbar = new joint.ui.Toolbar({
         tools: [
             { type: 'checkbox' },
             { type: 'range', name: 'slider', min: 0, max: 10, step: 1 },
@@ -73,7 +67,13 @@
         ]
     });
 
-    $('paperdiv').append(toolbar.render().el);
+    toolbar.render().$el.appendTo('#toolbardiv');
+
+        var stencil = new joint.ui.Stencil({
+
+            paper: paperScroller,
+            width: 240
+        });
 
         //CRIACAO DO DIAMOND
         var diamond = new joint.shapes.devs.Model({
